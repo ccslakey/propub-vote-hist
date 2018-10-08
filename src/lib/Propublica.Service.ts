@@ -24,12 +24,22 @@ class PropublicaService {
         
         return data;
     }
+
+    public async getMemberById(id:string) {
+        const headers = new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-API-KEY': this._API_KEY
+        });
+
+        const response = await fetch(`${this.baseUrl}/members/${id}.json`, {headers});
+        const data = await response.json();
+
+        return data;
+
+    }
 };
 
 
-// let x = new PropublicaService();
-
-// x.getMembersList();
-// debugger;
 
 export default PropublicaService;

@@ -2,10 +2,9 @@ import { filter } from 'lodash';
 import * as React from 'react';
 import PropublicaService from '../lib/Propublica.Service';
 
-// interface Props {
-//     onclick: (e: any) => void;
-    
-// };
+import {
+    Link
+} from 'react-router-dom';
 
 const ppService = new PropublicaService();
 
@@ -82,9 +81,9 @@ class MemberSearchTable extends React.Component {
         let tableContent;
         let members;
         if(this.state.members.length) {
-            members = this.state.filteredMembers.length ? this.state.filteredMembers: this.state.members; // use the input as filter or the base list
+            members = (this.state.firstNameInput.length || this.state.lastNameInput.length) ? this.state.filteredMembers: this.state.members; // use the input as filter or the base list
             tableContent = members.map(legislator => {
-                return <div key={legislator.id}>{legislator.first_name} {legislator.last_name}</div>
+                return <div key={legislator.id}>{legislator.first_name} {legislator.last_name} <Link to={`/legislator/${legislator.id}`}>View Person</Link></div>
             })
         } else {
             tableContent = <div>Loading...</div>
