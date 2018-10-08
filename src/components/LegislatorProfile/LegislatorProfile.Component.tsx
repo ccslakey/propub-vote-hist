@@ -35,7 +35,7 @@ class LegislatorProfile extends React.Component {
     public getLegislatorImage() {
         const { id } = this.props.match.params;
         
-        const filePath = `../../static/original/${id}.jpg`;
+        const filePath = `/images/original/${id}.jpg`;
 
         return <img src={filePath} />
     }
